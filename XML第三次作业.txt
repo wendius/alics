@@ -1,0 +1,33 @@
+1.什么叫有效的XML文件
+一个规范的XML文件如果和某个DTD文件相关联，并遵守该DTD文件规定的约束条件，就成为有效的XML文件
+
+2.DTD文件得编码必须和其约束的XML文件的编码一致吗？
+DTD所要约束的XML文件的编码为UTF-8，那么DTD文件也必须按照UTF-8编码保存。
+
+3.DTD文件中的元素的作用与其在DTD文件中的书写位置有关吗？
+无关，只需要导入路径正确就可以
+
+4.XML文件如何和一个DTD文件关联？
+<!DOCTYPE 跟标记的名称 SYSTEM "DTD文件的URL">
+
+10.
+DTD文件：
+A.dtd
+<!ELEMENT 成绩单  (学生*)>
+<!ELEMENT 学生 (姓名,成绩)>
+<!ELEMENT 姓名 (#PCDATA)>
+<!ELEMENT 成绩 (#PCDATA)>
+XML文件：
+B.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 成绩单 SYSTEM "D:A.dtd">
+<成绩单>
+<学生>
+	<姓名>小明</姓名>
+	<成绩>100分</成绩>
+</学生>
+<学生>
+	<姓名>小红</姓名>
+	<成绩>80分</成绩>
+</学生>
+</成绩单>
